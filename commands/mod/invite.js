@@ -15,9 +15,9 @@ module.exports = {
         /*if(['gather'].includes(args[0])) {
             message.guild.fetchInvites().then(guildInvites => {
                 guildInvites.forEach(invite => {
-                db.set('invites.code', invite.code)
-                db.set(`invites.${invite.code}.name`, invite.inviter.username)
-                db.set(`invites.${invite.code}.uses`, invite.uses)
+                db.set(`invite${invite.code}.code`, invite.code)
+                db.set(`invite${invite.code}.name`, invite.inviter.username)
+                db.set(`invite${invite.code}.uses`, invite.uses)
                 });
             })
             return message.channel.send('Gathered invites succesfully.')
@@ -30,9 +30,9 @@ module.exports = {
         let name = args[1];
 
         channel.createInvite({ maxAge: 0, unique: true }).then(invite => {
-            db.set(`invites.code`, invite.code)
-            db.set(`invites.${invite.code}.name`, name)
-            db.set(`invites.${invite.code}.uses`, 0)
+            db.set(`invite${invite.code}.code`, invite.code)
+            db.set(`invite${invite.code}.name`, name)
+            //db.set(`invite${invite.code}.uses`, 0)
             message.channel.send(invite.url);
         });
     }

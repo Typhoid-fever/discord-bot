@@ -77,9 +77,9 @@ fs.readdir("./events/", (err, files) => {
 
 client.on("inviteCreate", (invite) => {
     if(!invite.inviter.client) {
-      db.set('invites.code', invite.code)
-      db.set(`invites.${invite.code}.name`, invite.inviter)
-      db.set(`invites.${invite.code}.uses`, 0)
+      db.set(`invite${invite.code}.code`, invite.code)
+      db.set(`invite${invite.code}.name`, invite.inviter)
+      //db.set(`invite${invite.code}.uses`, 0)
     }
 
     /*const g = invite.guild;
@@ -120,15 +120,13 @@ client.on("guildMemberAdd", (member) => {
       const chnl = member.guild.channels.cache.get('698361306251788349');
 
       try {
-          const invite = guildInvites.find(i => db.get(`invites.${i.code}.uses`) < i.uses);
+          const invite = guildInvites.find(i => db.get(`invite${i.code}.uses`) < i.uses);
 
-          db.add(`invites.${invite.code}.uses`, 1)
+          db.add(`invite${invite.code}.uses`, 1)
 
-          const inviter = db.get(`invites.${invite.code}.name`) || 'unknown';
-              
-          let whereFrom = '';
+          const inviter = db.get(`invite${invite.code}.name`) || 'unknown';
 
-          chnl.send(`${member} joined from ${inviter}(${invite.uses}). ${whereFrom}`);
+          chnl.send(`${member} joined from ${inviter}(${invite.uses}).`);
           return chnl.send(joinEmbed);
       } catch(e) {
         console.log(e);

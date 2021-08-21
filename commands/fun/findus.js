@@ -13,10 +13,10 @@ module.exports = {
             .setAuthor(`${message.guild.name}`, message.guild.iconURL())
             .setThumbnail(client.displayAvatarURL)
             .addFields(
-                {name: 'Tiktok', value: 'https://vm.tiktok.com/qtbukW/', inline: true},
+                {name: 'Tiktok', value: 'https://www.tiktok.com/@menssanctuary_?', inline: true},
                 //{name: '\u200B', value: '\u200B', inline: true},
                 {name: 'Twitch', value: 'https://www.twitch.tv/menssanctuary', inline: true},
-                {name: 'Insta', value: 'https://www.instagram.com/mensanctuary/', inline: true},
+                {name: 'Insta', value: 'https://www.instagram.com/menssanctuary_/', inline: true},
                 )
             .setFooter('Go follow us!');
         message.channel.send(findusEmbed);
